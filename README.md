@@ -414,35 +414,35 @@ PAM reduces these risks by eliminating permanent privileged access and applying 
 
 ### Step x:
 
-[2025-05-08_11h15_20.png](images/2025-05-08_11h15_20.png)
+![image.png](images/2025-05-08_11h15_20.png)
 
-[2025-05-08_11h15_59.png](images/2025-05-08_11h15_59.png)
+![image.png](images/2025-05-08_11h15_59.png)
 
-[2025-05-08_11h18_51.png](images/2025-05-08_11h18_51.png)
+![image.png](images/2025-05-08_11h18_51.png)
 
-[2025-05-08_11h21_23.png](images/2025-05-08_11h21_23.png)
+![image.png](images/2025-05-08_11h21_23.png)
 
-[2025-05-08_11h22_32.png](images/2025-05-08_11h22_32.png)
+![image.png](images/2025-05-08_11h22_32.png)
 
-[2025-05-08_11h23_51.png](images/2025-05-08_11h23_51.png)
+![image.png](images/2025-05-08_11h23_51.png)
 
-[2025-05-08_11h36_15.png](images/2025-05-08_11h36_15.png)
+![image.png](images/2025-05-08_11h36_15.png)
 
-[2025-05-08_12h57_29.png](images/2025-05-08_12h57_29.png)
+![image.png](images/2025-05-08_12h57_29.png)
 
-[2025-05-08_13h05_01.png](images/2025-05-08_13h05_01.png)
+![image.png](images/2025-05-08_13h05_01.png)
 
-[2025-05-08_13h07_03.png](images/2025-05-08_13h07_03.png)
+![image.png](images/2025-05-08_13h07_03.png)
 
-[2025-05-08_13h21_57.png](images/2025-05-08_13h21_57.png)
+![image.png](images/2025-05-08_13h21_57.png)
 
-[2025-05-08_13h23_00.png](images/2025-05-08_13h23_00.png)
+![image.png](images/2025-05-08_13h23_00.png)
 
-[2025-05-08_13h23_19.png](images/2025-05-08_13h23_19.png)
+![image.png](images/2025-05-08_13h23_19.png)
 
-[2025-05-08_13h34_25.png](images/2025-05-08_13h34_25.png)
+![image.png](images/2025-05-08_13h34_25.png)
 
-[2025-05-08_13h39_08.png](images/2025-05-08_13h39_08.png)
+![image.png](images/2025-05-08_13h39_08.png)
 
 ```powershell
 # Import du module Active Directory
