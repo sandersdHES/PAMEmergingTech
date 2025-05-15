@@ -177,29 +177,45 @@ https://jumpserver.org/index-en.html
 
 # 4. Lab Architecture
 
-### *Environment*
+### 4.1 Environment
 
-- *Azure-based or local VM setup*
+Our lab was built using Microsoft Azure, leveraging its scalable infrastructure and ease of resource provisioning.
 
-### *Components*
+### 4.2 Components
 
-- *AD server*
-- *File server*
-- *Terminal server*
-- *Admin Bastion*
-- *PAM360 server*
-- *Test clients (Windows/Linux)*
+The lab setup includes the following components:
 
-### *Setup Overview*
+| **Component**                    | **Role**                                                                                                                    |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **PAM360 Server**                | Central management console for privileged access, credential vault, session monitoring, and Zero Trust enforcement          |
+| **Active Directory Server**      | Centralized identity management system used for user authentication, group policies, and AD-integrated login scenarios      |
+| **Windows 10 Client VM**         | Simulates end-user scenarios such as RDP access, password requests, and session recording                                   |
+| **Ubuntu Linux VM**              | Demonstrates SSH-based access control, command restriction, and key-based authentication                                    |
+| **Test Users (Windows & Linux)** | Created via PowerShell and added to AD, used to simulate roles like administrators, power users, and standard users         |
+| **Azure SQL Server & Database**  | Represents a cloud-hosted data resource secured via PAM360, with session auditing and password rotation capabilities        |
+| **Azure Web App (TOTP Demo)**    | A demo application used to showcase TOTP integration with PAM360 for secure authentication and form autofill                |
+| **VPN Gateway (Azure)**          | Provides secure remote access to the virtual network hosting PAM360, enabling controlled external connections to lab assets |
 
-- *Virtual Network & Subnets*
-- *PAM360 deployment steps*
-- *Jump host and user access flow*
-- *MFA, JIT access, credential vault*
 
-*Optional: Include a network diagram or architecture graphic.*
+### 4.3 Network Design
+
+All components were deployed within a single Azure Virtual Network (VNet) segmented using subnets for isolation:
+
+- Subnet A: Management Layer – PAM360
+
+- Subnet B: Resource Layer – AD, Linux and Windows VMs
+
+Network Security Groups (NSGs) were configured to tightly control traffic between subnets, only allowing required ports (e.g., RDP 3389, SSH 22, HTTP 80/8282, SQL 1433). VPN access has also been set up on the Management Layer. This allows user to connect from their local on PAM360, but not directly into the resources. You must go through PAM360 to access them.
+
+### 4.3 Visual Architecture from our lab
+
+Add architecture image here
+
+### 4.4 Visual Architecture Template from ManageEngine
 
 ![image.png](images/image%203.png)
+
+This diagram shows how users interact with PAM360 to access remote systems while traffic is monitored and routed securely through the PAM360 server, which acts as a central point of control and audit.
 
 ---
 
@@ -230,7 +246,6 @@ An example configuration:
         - Recommended: Minimal specs sufficient
 
 <aside>
-⚠️
 
 **Important**: When creating VMs, ensure to:
 
@@ -1176,7 +1191,7 @@ We will also install PAM browser Extension so that you can access, record websit
 
 ![image.png](images/0e94ec85-f247-4bc2-a07b-99a840eabe1c.png)
 
-## Step 5: Access the Web App via PAM360
+### Step 5: Access the Web App via PAM360
 
 This extension will open up all resources currently available on PAM. 
 
@@ -1194,7 +1209,7 @@ This extension will open up all resources currently available on PAM.
 > ![image.png](images/image%2064.png)
 > 
 
-## Step 6: Verify Successful Login
+### Step 6: Verify Successful Login
 
 After correct autofill, the demo app authenticates and shows a **successful login message**. This proves that:
 
@@ -1618,7 +1633,7 @@ Here, you'll see:
 
 ![image.png](images/image%2089.png)
 
-### 🔐 Step 6: Assign Command Groups
+### Step 6: Assign Command Groups
 
 1. Go to the **pamuser** account in PAM360
 2. Click **Configure SSH Command Control**
