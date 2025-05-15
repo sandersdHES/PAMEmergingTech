@@ -343,26 +343,41 @@ The Agent enables secure, remote management of systems that are not directly con
 
 ### Objective
 
+To securely connect remote systems (e.g. VMs or servers in a separate subnet) to PAM360 for centralized password rotation and management, using the PAM360 Agent over HTTPS.
+
 ### Context
+
+In our PAM360 project setup, we used an isolated virtual machine as the test environment for the PAM Agent installation. The agent VM had no direct access to the PAM360 server subnet, mimicking a real-world DMZ or branch-office scenario. This allowed us to test agent registration, secure certificate-based trust, and the ability to push credential operations remotely.
 
 ### **Prerequisites**
 
-### Step x:
+- PAM360 server is running and reachable via HTTPS from the agent VM (outbound).
+- PAM360 server SSL certificate available for import.
+- Agent installer downloaded from the PAM360 server UI.
+- Administrative rights on the agent machine (Windows/Linux).
+- Agent hostname configured to match the SSL certificate (or subject alternative name).
 
-1. **Open PAM360 Web UI** in a browser on the agent VM:
+### Step 1: **Open PAM360 Web UI** in a browser on the agent VM:
     
     `https://<PAM360-IP>:8282`
     
-2. Click the **🔒 padlock → View Certificate → Details → Copy to File**
-3. Export the certificate as `.cer` file
-4. Open **certmgr.msc** on the agent machine
-5. Import the `.cer` file into:
+### Step 2: Click the 🔒 padlock in the address bar → View Certificate → Details → Copy to File
+
+### Step 3: Export the certificate as a `.cer` file
+
+### Step 4: Open **certmgr.msc** on the agent machine
+
+### Step 5: Import the `.cer` file into:
     - **Trusted Root Certification Authorities → Certificates**
 
-Then re-run the agent installer:
+### Step 6: Run the PAM360 Agent installer:
+    - Ensure you use the **host name that matches the certificate subject** (e.g. pam360.company.local)
+    - Set **SSL Certificate Installed = Yes**
+    - Use the Agent Key from the PAM360 Web UI under Admin → PAM360 Agent
 
-- Use **host name that matches the cert subject** (e.g., `pam360.company.local`)
-- Keep **SSL Certificate Installed = Yes**
+### Step 7: After successful installation:
+    - The agent should appear under **Admin → PAM360 Agent** with status **"Connected"**.
+    - You can now assign password reset tasks or perform remote actions on the target system.
 
 ![image.png](images/image%2010.png)
 
