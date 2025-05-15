@@ -41,7 +41,7 @@ Fortunately for Uber, the attacker appeared to not be motivated by financial gai
 
 Below is a scheme from the attack, provided by DNV Cyber :
 
-![image.png](image.png)
+![image.png](images/image.png)
 
 This incident showcases the danger of hardcoded credentials, over-privileged user access and the fact that even MFA can be bypassed with targeted social engineering.
 
@@ -105,7 +105,7 @@ This project uses **ManageEngine PAM360** as the core platform to demonstrate pr
 
 A member of our group secured a license for **ManageEngine PAM360**, prompting us to select this solution for our Proof of Concept (PoC). According to Gartner, ManageEngine is recognized as a Challenger in the 2024 Magic Quadrant™ for Privileged Access Management, highlighting its viability for our PoC .
 
-![[ManageEngine named a Challenger in the 2024 Gartner® Magic Quadrant™ for Privileged Access Management | ManageEngine PAM360](https://www.manageengine.com/privileged-access-management/analyst-opinion/gartner-magic-quadrant-pam.html?new-homepage)](image%201.png)
+![[ManageEngine named a Challenger in the 2024 Gartner® Magic Quadrant™ for Privileged Access Management | ManageEngine PAM360](https://www.manageengine.com/privileged-access-management/analyst-opinion/gartner-magic-quadrant-pam.html?new-homepage)](images/image%201.png)
 
 [ManageEngine named a Challenger in the 2024 Gartner® Magic Quadrant™ for Privileged Access Management | ManageEngine PAM360](https://www.manageengine.com/privileged-access-management/analyst-opinion/gartner-magic-quadrant-pam.html?new-homepage)
 
@@ -114,7 +114,7 @@ Upon installation, PAM360 is described as:
 > "A web-based privileged access management (PAM) solution that helps enterprises regulate access to critical IT assets and mitigate risks of privilege misuse and insider threats. Through powerful privileged access governance, smoother workflow automation, advanced analytics, and contextual integrations with various IT services, PAM360 enables enterprises to bring different avenues of their IT management system together, facilitating holistic privileged access security, meaningful inferences, and quicker remedies."
 > 
 
-![image.png](a01d01c0-3141-4ae5-930c-ef5e328b4d5d.png)
+![image.png](images/a01d01c0-3141-4ae5-930c-ef5e328b4d5d.png)
 
 ### **Standouts features for us**
 
@@ -132,7 +132,7 @@ We also evaluated **JumpServer**, an open-source alternative, during the initial
 
 JumpServer, developed by **Fit2Cloud,** is an Alternative to one of the leaders in the market, CyberArk. It runs on a Linux Server and can then be accessed on the web
 
-![image.png](image%202.png)
+![image.png](images/image%202.png)
 
 Here are some features offered by this tool : 
 
@@ -199,7 +199,7 @@ https://jumpserver.org/index-en.html
 
 *Optional: Include a network diagram or architecture graphic.*
 
-![image.png](image%203.png)
+![image.png](images/image%203.png)
 
 ---
 
@@ -218,7 +218,7 @@ This section documents the setup of our privileged access management lab using *
 
 An example configuration:
 
-![image.png](image%204.png)
+![image.png](images/image%204.png)
 
 1. Create the following VMs, assigning them to the appropriate subnet:
     - **PAM360 Server** (Windows Server) – Hosts the PAM360 application.
@@ -237,7 +237,7 @@ An example configuration:
 - Attach them to the VNet you configured
 - Set up Network Security Group (NSG) rules as shown below:
     
-    ![image2.png](image2.png)
+    ![image2.png](images/image2.png)
     
 </aside>
 
@@ -251,15 +251,15 @@ An example configuration:
     - Select “High Availability – Primary Server” setup.
     - Use "Read-Only Server" only for end-users or secondary setups.
 
-![3.png](3.png)
+![3.png](images/3.png)
 
 1. **Access the Web UI** via `http://localhost:8282` and log in with default credentials (`admin` / `admin`).
 
-![4.png](53310f34-3f84-49ee-b697-d815d60fd50e.png)
+![4.png](images/53310f34-3f84-49ee-b697-d815d60fd50e.png)
 
 1. **Change Default Password** and update admin contact information.
 
-![5.png](5.png)
+![5.png](images/5.png)
 
 ## 5.3 Configuring Email Notifications (SMTP)
 
@@ -267,7 +267,7 @@ To enable email alerts for password changes, user creation, etc., configure the 
 
 1. Go to **Admin** → **Mail Server Settings**
 
-![6.png](6.png)
+![6.png](images/6.png)
 
 1. For our PoC we created a Gmail account and generated an **App Password**.
     - Create a Gmail account
@@ -282,7 +282,7 @@ To enable email alerts for password changes, user creation, etc., configure the 
     - **Username / Password**: your Gmail + app password
     - **Protocol**: `TLS`
 
-![7.png](7.png)
+![7.png](images/7.png)
 
 ## 5.4 Adding Azure Virtual Machines as Resources
 
@@ -294,15 +294,15 @@ To enable email alerts for password changes, user creation, etc., configure the 
     - **IP Address**: IP of your Windows 10 VM
     - **Type**: Windows
 
-![image.png](image%205.png)
+![image.png](images/image%205.png)
 
 1. Add a user account manually using the credentials you defined during VM creation.
 
-![image.png](image%206.png)
+![image.png](images/image%206.png)
 
 1. Click **Discover Accounts** to automatically fetch all users from the VM using the added admin credentials.
 
-![image.png](edad5dc7-b07b-4b54-b953-9b386a5dbdbe.png)
+![image.png](images/edad5dc7-b07b-4b54-b953-9b386a5dbdbe.png)
 
 ### **5.4.2 Ubuntu VM**:
 
@@ -318,14 +318,14 @@ Use the **Discover Resources** feature:
     - **Authentication**: Manual (enter the Ubuntu VM username and password)
     - **Account Discovery**: Enabled
 
-![image.png](image%207.png)
+![image.png](images/image%207.png)
 
 1. Run the discovery scan.
 2. Add the discovered VM to PAM360.
 
-![image.png](image%208.png)
+![image.png](images/image%208.png)
 
-![image.png](image%209.png)
+![image.png](images/image%209.png)
 
 Now that the Windows and Linux VMs are added, try initiating remote sessions directly from PAM360 to ensure proper configuration and user mapping.
 
@@ -364,19 +364,19 @@ Then re-run the agent installer:
 - Use **host name that matches the cert subject** (e.g., `pam360.company.local`)
 - Keep **SSL Certificate Installed = Yes**
 
-![image.png](image%2010.png)
+![image.png](images/image%2010.png)
 
-![image.png](image%2011.png)
+![image.png](images/image%2011.png)
 
-![image.png](image%2012.png)
+![image.png](images/image%2012.png)
 
 Verifying pam agent into PAM360 console
 
-![image.png](image%2013.png)
+![image.png](images/image%2013.png)
 
-![image.png](image%2014.png)
+![image.png](images/image%2014.png)
 
-![image.png](image%2015.png)
+![image.png](images/image%2015.png)
 
 ### Conclusion
 
@@ -414,35 +414,35 @@ PAM reduces these risks by eliminating permanent privileged access and applying 
 
 ### Step x:
 
-[2025-05-08_11h15_20.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_11h15_20.png)
+[2025-05-08_11h15_20.png](images/2025-05-08_11h15_20.png)
 
-[2025-05-08_11h15_59.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_11h15_59.png)
+[2025-05-08_11h15_59.png](images/2025-05-08_11h15_59.png)
 
-[2025-05-08_11h18_51.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_11h18_51.png)
+[2025-05-08_11h18_51.png](images/2025-05-08_11h18_51.png)
 
-[2025-05-08_11h21_23.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_11h21_23.png)
+[2025-05-08_11h21_23.png](images/2025-05-08_11h21_23.png)
 
-[2025-05-08_11h22_32.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_11h22_32.png)
+[2025-05-08_11h22_32.png](images/2025-05-08_11h22_32.png)
 
-[2025-05-08_11h23_51.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_11h23_51.png)
+[2025-05-08_11h23_51.png](images/2025-05-08_11h23_51.png)
 
-[2025-05-08_11h36_15.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_11h36_15.png)
+[2025-05-08_11h36_15.png](images/2025-05-08_11h36_15.png)
 
-[2025-05-08_12h57_29.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_12h57_29.png)
+[2025-05-08_12h57_29.png](images/2025-05-08_12h57_29.png)
 
-[2025-05-08_13h05_01.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_13h05_01.png)
+[2025-05-08_13h05_01.png](images/2025-05-08_13h05_01.png)
 
-[2025-05-08_13h07_03.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_13h07_03.png)
+[2025-05-08_13h07_03.png](images/2025-05-08_13h07_03.png)
 
-[2025-05-08_13h21_57.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_13h21_57.png)
+[2025-05-08_13h21_57.png](images/2025-05-08_13h21_57.png)
 
-[2025-05-08_13h23_00.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_13h23_00.png)
+[2025-05-08_13h23_00.png](images/2025-05-08_13h23_00.png)
 
-[2025-05-08_13h23_19.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_13h23_19.png)
+[2025-05-08_13h23_19.png](images/2025-05-08_13h23_19.png)
 
-[2025-05-08_13h34_25.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_13h34_25.png)
+[2025-05-08_13h34_25.png](images/2025-05-08_13h34_25.png)
 
-[2025-05-08_13h39_08.png](https://hessoit-my.sharepoint.com/personal/johann_vonroten_hes-so_ch/Documents/Fichiers%20de%20conversation%20Microsoft%20Teams/2025-05-08_13h39_08.png)
+[2025-05-08_13h39_08.png](images/2025-05-08_13h39_08.png)
 
 ```powershell
 # Import du module Active Directory
@@ -487,9 +487,9 @@ foreach ($user in $users) {
 }
 ```
 
-![image.png](image%2016.png)
+![image.png](images/image%2016.png)
 
-![image.png](image%2017.png)
+![image.png](images/image%2017.png)
 
 ### Conclusion
 
@@ -645,7 +645,7 @@ We will walk through the process of:
     - Viewing shared passwords
     - No management or administrative rights
         
-        ![image.png](image%2018.png)
+        ![image.png](images/image%2018.png)
         
     
     You can also define custom roles if default ones don’t fit your use case. Learn more
@@ -658,14 +658,14 @@ We will walk through the process of:
         - This sends login credentials to the user's email
     3. Leave remaining fields as default and click **Add User**
 
-![image.png](image%2019.png)
+![image.png](images/image%2019.png)
 
 The new user receives an email with:
 
 - Role description
 - Login credentials
 
-![image.png](image%2020.png)
+![image.png](images/image%2020.png)
 
 ### Step 2: Share Resources with the User
 
@@ -676,28 +676,28 @@ By default, the user has **no access to resources**.
 3. Choose **Share > Share Resource**
 4. Grant **View Passwords** permission only
 
-![image.png](image%2021.png)
+![image.png](images/image%2021.png)
 
 ### Step 3: First Login
 
 1. Log in as the new user
 2. The system prompts a **password change** for security
 
-![image.png](image%2022.png)
+![image.png](images/image%2022.png)
 
 After login, the user will:
 
 - Be directed to the **Resources** tab
 - See only the machines that were shared
 
-![image.png](image%2023.png)
+![image.png](images/image%2023.png)
 
 When the user opens a resource:
 
 - Only **“View”** and **“Verify Password”** actions are available
 - Options like **“Change Password”** are disabled (greyed out)
 
-![image.png](image%2024.png)
+![image.png](images/image%2024.png)
 
 ### Step 4: Set Up Access Control Policy
 
@@ -708,19 +708,19 @@ To go further and restrict access based on time, approval, or session, enable **
 3. Define **Approvers** (e.g., Admin account)
     - They will review and approve access requests
         
-        ![image.png](image%2025.png)
+        ![image.png](images/image%2025.png)
         
 4. Define **Exempt Users** (e.g., Admins with auto-access)
     
-    ![image.png](image%2026.png)
+    ![image.png](images/image%2026.png)
     
 5. Configure advanced options as shown in the printscreen
     
-    ![image.png](image%2027.png)
+    ![image.png](images/image%2027.png)
     
 6. (Optional) Skip manual approval for specific time windows
     
-    ![image.png](image%2028.png)
+    ![image.png](images/image%2028.png)
     
 
 Click **Save & Activate**
@@ -735,45 +735,45 @@ Click **Save & Activate**
 3. Click **Request** to request password access
 - Now go back and connect with the password user we’ve created previously. If you navigate to the resources and then click on it, notice the password is not visible and replace by a “Request” button
 
-![image.png](image%2029.png)
+![image.png](images/image%2029.png)
 
 - Fill in a reason and select **“Now”** for access time
 
-![image.png](image%2030.png)
+![image.png](images/image%2030.png)
 
 - Admin logs in and sees the request on the dashboard
 
-![image.png](image%2031.png)
+![image.png](images/image%2031.png)
 
 - Go to **Admin > Access Review > Password Access Requests**
 
-![image.png](image%2032.png)
+![image.png](images/image%2032.png)
 
 You will have the list of request password with the field “Process request”
 
-![image.png](image%2033.png)
+![image.png](images/image%2033.png)
 
 - Click **Process Request > Approve** and add a reason
 
-![image.png](image%2034.png)
+![image.png](images/image%2034.png)
 
 - The user will be notified by mail that the password is now accessible, along with approval details
 
-![image.png](image%2035.png)
+![image.png](images/image%2035.png)
 
 - Go back to previously created user and click on “Check out”. It will prompt you a message telling you that you have 30 minutes and then the password will be revoked back. Click on “Check out” again.
 
-![image.png](image%2036.png)
+![image.png](images/image%2036.png)
 
 You can now access the machine and see the password.
 
-![image.png](image%2037.png)
+![image.png](images/image%2037.png)
 
-![image.png](image%2038.png)
+![image.png](images/image%2038.png)
 
 - Once this is done, click on check-in. If you try to login again, it will fail since you need a new approval to connect to the machine after checking in !
 
-![image.png](image%2039.png)
+![image.png](images/image%2039.png)
 
 > If the admin **rejects the request**, the user receives a denial email. The password remains inaccessible, but the user can still submit a new request later.
 > 
@@ -823,7 +823,7 @@ The **passphrase** acts as a **local encryption key** for securing your personal
 > Your passphrase is used to **locally encrypt** your data within PAM360. Without it, no one—including administrators—can view or decrypt your personal entries. This is a core principle of **zero-knowledge encryption**.
 > 
 
-![image.png](image%2040.png)
+![image.png](images/image%2040.png)
 
 PAM360 enforces complexity by default to protect your data against brute-force and dictionary attacks.
 
@@ -834,7 +834,7 @@ Ensure your passphrase meets the following conditions:
 
 **Tip**: Use a passphrase that is strong but memorable (e.g., a sentence or phrase with symbols).
 
-![image.png](image%2041.png)
+![image.png](images/image%2041.png)
 
 ### Step 2 : Re-access Your Personal Vault
 
@@ -842,7 +842,7 @@ Whenever you revisit the **Personal** section, PAM360 will request your passphra
 
 If entered correctly, you'll regain access to all personal entries in your encrypted store.
 
-![image.png](image%2042.png)
+![image.png](images/image%2042.png)
 
 ### Step 3: Use the Four Default Personal Data Categories
 
@@ -857,7 +857,7 @@ Each category allows you to store detailed, encrypted entries that only you can 
 
 Example with for bank accounts :
 
-![image.png](image%2043.png)
+![image.png](images/image%2043.png)
 
 ### Step 4: What If You Forget Your Passphrase?
 
@@ -870,7 +870,7 @@ If your passphrase is lost or forgotten:
 > ❗ Warning: Treat your passphrase like a digital safe key—once lost, the contents inside are unrecoverable.
 > 
 
-![personal-passwords8.png](personal-passwords8.png)
+![personal-passwords8.png](images/personal-passwords8.png)
 
 ### Conclusion
 
@@ -910,7 +910,7 @@ As an **Administrator** or a **Password User** with the right permissions:
 
 This ensures that the password is **updated both in PAM360 and on the remote Windows machine**, keeping them in sync.
 
-![image.png](image%2044.png)
+![image.png](images/image%2044.png)
 
 Passwords are automatically stored and encrypted, and can be retrieved or rotated as needed.
 
@@ -939,9 +939,9 @@ You can also define custom policies with the following parameters:
 1. From the **Dashboard**, click on **Policy Violations** at the top
 2. This provides an overview of passwords that **do not comply** with the policy assigned to their resource
     
-    ![image.png](image%2045.png)
+    ![image.png](images/image%2045.png)
     
-    ![image.png](image%2046.png)
+    ![image.png](images/image%2046.png)
     
 
 ### Step 4: Review Violations Per Resource
@@ -950,7 +950,7 @@ You can also define custom policies with the following parameters:
 2. Click **Policy Violations**
 3. You will see a detailed list of all **non-compliant accounts**
 
-![image.png](image%2047.png)
+![image.png](images/image%2047.png)
 
 ### Step 5: Perform a Bulk Password Reset
 
@@ -963,11 +963,11 @@ To resolve the violations:
     - Enable **Apply password changes to remote resource(s)**
     - Enable **Send email notification to users**
 
-![image.png](image%2048.png)
+![image.png](images/image%2048.png)
 
 - The system will prompt you to select the users that will receive the email notifications. Let’s only send the email to the Administrators.
 
-![image.png](image%2049.png)
+![image.png](images/image%2049.png)
 
 ### Step 6: Bulk Operation Execution and Audit Trail
 
@@ -977,7 +977,7 @@ Once triggered:
 - If remote sync is configured, changes are applied directly to the machines
 - You can monitor the operation via **Audit > Resource Audit**
 
-![image.png](image%2050.png)
+![image.png](images/image%2050.png)
 
 An email is sent to the selected users, summarizing:
 
@@ -985,9 +985,9 @@ An email is sent to the selected users, summarizing:
 - New password status
 - Operation success/failure per resource
 
-![image.png](image%2051.png)
+![image.png](images/image%2051.png)
 
-![image.png](image%2052.png)
+![image.png](images/image%2052.png)
 
 ### Step 7: Test
 
@@ -996,11 +996,11 @@ Go back to **Resources** and confirm that:
 - Passwords were successfully changed
 - Accounts now show as **compliant** with their assigned password policies
 
-![image.png](image%2053.png)
+![image.png](images/image%2053.png)
 
 As a final test, try connecting to one of the resources (e.g., a Linux machine) using the **newly reset password** to verify proper synchronization.
 
-![image.png](image%2054.png)
+![image.png](images/image%2054.png)
 
 ### Conclusion
 
@@ -1046,7 +1046,7 @@ Access your PAM360 web portal, e.g.:
 - Choose **Google Authenticator** as your 2FA method.
 - Save the configuration.
 
-![image.png](image%2055.png)
+![image.png](images/image%2055.png)
 
 ### Step 3: **Assign MFA to Specific Users**
 
@@ -1054,7 +1054,7 @@ Access your PAM360 web portal, e.g.:
 - Select the users who should use MFA.
 - Click **“Enroll”** for each user.
 
-![image.png](image%2056.png)
+![image.png](images/image%2056.png)
 
 ### Step 4: **First-Time Login for Users**
 
@@ -1064,7 +1064,7 @@ The next time a user logs in:
 - User must scan it using the **Google Authenticator app** on their phone.
 - They’ll enter the **6-digit OTP** to complete login.
     
-    ![image.png](image%2057.png)
+    ![image.png](images/image%2057.png)
     
 
 ### Step 5: **(Optional) Enforce MFA for All Users**
@@ -1123,13 +1123,13 @@ We have already created a small Flask app for you implementing a basic login pag
     - Use **Free (F1)** pricing tier
     - Select Python as the runtime (latest version recommended)
         
-        ![image.png](image%2058.png)
+        ![image.png](images/image%2058.png)
         
 - In the **Deployment Center** of the Web App:
     - Connect it to your GitHub repository
     - Deploy from the branch your code is hosted on
 
-![image.png](image%2059.png)
+![image.png](images/image%2059.png)
 
 Ensure the application deploys correctly
 
@@ -1145,7 +1145,7 @@ Ensure the application deploys correctly
     - **Resource URL**: Use the Azure Web App URL
     - **Session Recording**: Enable both options
 
-![image.png](image%2060.png)
+![image.png](images/image%2060.png)
 
 ### Step 3: Add the Demo Account
 
@@ -1158,7 +1158,7 @@ Ensure the application deploys correctly
     > ⚠️ Note: Once saved, the TOTP Secret cannot be retrieved
     > 
 
-![image.png](image%2061.png)
+![image.png](images/image%2061.png)
 
 ### Step 4: Install and Configure the PAM360 Browser Extension
 
@@ -1167,14 +1167,14 @@ We will also install PAM browser Extension so that you can access, record websit
 1. Open **Edge > Extensions**
 2. Enable **Allow extensions from other stores**
     
-    ![image.png](image%2062.png)
+    ![image.png](images/image%2062.png)
     
 3. Install the [ManageEngine PAM360 Extension](https://chromewebstore.google.com/detail/manageengine-pam360/cdkfhfalbgbjedofghkapcgeodemhghp)
 4. Click on the extension icon and configure:
     - **Server**: `http://localhost`
     - **Port**: `8282`
 
-![image.png](0e94ec85-f247-4bc2-a07b-99a840eabe1c.png)
+![image.png](images/0e94ec85-f247-4bc2-a07b-99a840eabe1c.png)
 
 ## Step 5: Access the Web App via PAM360
 
@@ -1183,7 +1183,7 @@ This extension will open up all resources currently available on PAM.
 1. In the extension, select your Web App resource
 2. Choose **HTTPS Gateway Connection**
     
-    ![image.png](image%2063.png)
+    ![image.png](images/image%2063.png)
     
 - The extension will **autofill the username, password, and TOTP**
 - The login form is submitted, and the session is recorded
@@ -1191,7 +1191,7 @@ This extension will open up all resources currently available on PAM.
 > 💡 If autofill fails, you can manually access the Account Details in PAM360 to retrieve the password and TOTP code.
 > 
 > 
-> ![image.png](image%2064.png)
+> ![image.png](images/image%2064.png)
 > 
 
 ## Step 6: Verify Successful Login
@@ -1202,7 +1202,7 @@ After correct autofill, the demo app authenticates and shows a **successful logi
 - PAM360 can generate valid time-based codes
 - Login automation with PAM360 browser extension works as expected
 
-![image.png](image%2065.png)
+![image.png](images/image%2065.png)
 
 ### Conclusion
 
@@ -1253,7 +1253,7 @@ Here are some key benefits of using Zero Trust in a company :
 
 You can implement it using many standards. Here you can see the Zero Trust Framework from The National Institute of Standards and Technology for the United States (NIST) to illustrate how it can be set up.
 
-![[https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/](https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/)](nist-zero-trust-framework-1024x480.png)
+![[https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/](https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/)](images/nist-zero-trust-framework-1024x480.png)
 
 [https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/](https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/)
 
@@ -1263,7 +1263,7 @@ PAM360 has also the capabilities of enabling Zero Trust with its software soluti
 
 Let’s see PAM360’s approach on this topic :
 
-![image.png](image%2066.png)
+![image.png](images/image%2066.png)
 
 1. **Validate Users and Resources**
     - The first step is to confirm the identity and integrity of both users and the resources they are trying to access. This often involves verifying credentials, roles, and device security posture.
@@ -1274,7 +1274,7 @@ Let’s see PAM360’s approach on this topic :
 
 Now how does PAM360 implement Zero Trust ?
 
-![image.png](image%2067.png)
+![image.png](images/image%2067.png)
 
 - **Installing PAM360 Agent in User Devices and Resources**
     - Deploying PAM360 agents on endpoints and critical resources to enable monitoring, enforcement, and access control.
@@ -1323,16 +1323,16 @@ This dynamic model enables **fine-grained and adaptive access control**, alignin
 1. Log in as a **Privileged Administrator**
 2. Navigate to **Admin > Zero Trust > Configuration**
 
-![zt-implementation-2.PNG](f3f1b5d6-e0b1-4ea6-83a1-29f1da166f80.png)
+![zt-implementation-2.PNG](images/f3f1b5d6-e0b1-4ea6-83a1-29f1da166f80.png)
 
 Here, you’ll see **parameters** that influence **User** and **Resource Trust Scores**. 
 
 - **Authentication Factors**: MFA usage, IP reputation, login history
 - **Device Context**: Type of device used, browser safety, OS patch level
 
-![image.png](image%2068.png)
+![image.png](images/image%2068.png)
 
-![image.png](image%2069.png)
+![image.png](images/image%2069.png)
 
 ### Step 2: Customize Trust Score Weightage
 
@@ -1342,9 +1342,9 @@ Here, you can **assign weights** (0–10) to each parameter. The **total score i
 
 The score will be adapted depending on if a parametric condition is met or not.
 
-![image.png](image%2070.png)
+![image.png](images/image%2070.png)
 
-![image.png](image%2071.png)
+![image.png](images/image%2071.png)
 
 ### Step 3: Create a Zero Trust Access Policy
 
@@ -1366,7 +1366,7 @@ Now prepare your first policy
 - Name it **“Privileged Policy”**
 - Configure conditions as shown:
 
-![image.png](image%2072.png)
+![image.png](images/image%2072.png)
 
 ### Step 4: Approve the Policy (If Required)
 
@@ -1377,19 +1377,19 @@ If policy approval is enabled:
 1. Go to **Admin > Access Policies > Process Request**
 2. Approve or reject pending policy requests
 
-![image.png](image%2073.png)
+![image.png](images/image%2073.png)
 
-![image.png](image%2074.png)
+![image.png](images/image%2074.png)
 
 ### Step 5 : Apply the Policy to a Resource Group
 
 1. Navigate to **Groups > Add Group > Static Group**
     
-    ![image.png](image%2075.png)
+    ![image.png](images/image%2075.png)
     
 2. Select the **Linux machine** (or relevant resource) to include in the group
     
-    ![image.png](image%2076.png)
+    ![image.png](images/image%2076.png)
     
 3. Assign your **Zero Trust Policy** to this group from the group settings
 
@@ -1400,11 +1400,11 @@ Try logging in to the Linux machine using a **test user** with a low trust score
 - PAM360 will **evaluate trust conditions in real-time**
 - If the user's context doesn’t satisfy the policy, access is denied
 
-![image.png](0481f7c7-f029-4748-88c6-db13489ae867.png)
+![image.png](images/0481f7c7-f029-4748-88c6-db13489ae867.png)
 
 The user also receives an email notification explaining the reason for denial and suggesting to contact an administrator
 
-![image.png](image%2077.png)
+![image.png](images/image%2077.png)
 
 ### Conclusion
 
@@ -1447,7 +1447,7 @@ This will generate:
 - `github_pam360_key` → Private key
 - `github_pam360_key.pub` → Public key
 
-![image.png](image%2078.png)
+![image.png](images/image%2078.png)
 
 **Alternative**: PAM360 can also generate the key pair for you (with passphrase) via its **SSH Key Management** feature. This will be showcased in the use case 6.xx
 
@@ -1458,7 +1458,7 @@ This will generate:
 3. Provide a name like `pam360 test`
 4. Paste the contents of your `github_pam360_key.pub` file
 
-![image.png](image%2079.png)
+![image.png](images/image%2079.png)
 
 ### Step 3: Store the Private Key in PAM360
 
@@ -1470,7 +1470,7 @@ This will generate:
     - **Associated User/Team**
     - **Expiration Policy**, etc.
 
-![image.png](image%2080.png)
+![image.png](images/image%2080.png)
 
 PAM360 ensures the key is encrypted at rest and access-controlled.
 
@@ -1532,7 +1532,7 @@ In PAM360, navigate to **SSH Keys > Add SSH Key** and fill in the required field
 - **Key Type**: RSA
 - **Key Length**: 2048 or 4096 bits
 
-![image.png](image%2081.png)
+![image.png](images/image%2081.png)
 
 ### Step 2: Associate the Key with a Linux Resource
 
@@ -1546,7 +1546,7 @@ After generating the key:
 
 Only accounts with appropriate permissions will have the public key deployed, and access will be governed by PAM360’s policies.
 
-![image.png](image%2082.png)
+![image.png](images/image%2082.png)
 
 ### Step 3: Configure PAM360 to Use the Key for Login
 
@@ -1556,7 +1556,7 @@ Only accounts with appropriate permissions will have the public key deployed, an
 
 This ensures all SSH sessions initiated via PAM360 use the private key, enhancing security and traceability.
 
-![image.png](image%2083.png)
+![image.png](images/image%2083.png)
 
 ### Step 4: Test the SSH Connection
 
@@ -1575,7 +1575,7 @@ Accepted publickey for admin
 
 This confirms that key-based authentication is working.
 
-![image.png](image%2084.png)
+![image.png](images/image%2084.png)
 
 ### Optional: Set Up SSH Key Rotation
 
@@ -1585,12 +1585,12 @@ To reduce the risk of stale or compromised keys, PAM360 supports **key rotation*
 2. Select the key > **Key Rotation**
 3. Choose whether to push private/public keys to the remote system
 
-![image.png](image%2085.png)
+![image.png](images/image%2085.png)
 
 > ⚠️ Good practice: Enable expiry notifications to receive alerts before a key becomes outdated. This ensures continuous secure access.
 > 
 
-![image.png](image%2086.png)
+![image.png](images/image%2086.png)
 
 ### Step 5: Restrict Commands Using Command Control
 
@@ -1612,11 +1612,11 @@ Here, you'll see:
 - **Commands**: All defined CLI commands
 - **Command Groups**: Logical groupings (e.g., "File System", "Basic Administration")
 
-![image.png](image%2087.png)
+![image.png](images/image%2087.png)
 
-![image.png](image%2088.png)
+![image.png](images/image%2088.png)
 
-![image.png](image%2089.png)
+![image.png](images/image%2089.png)
 
 ### 🔐 Step 6: Assign Command Groups
 
@@ -1626,13 +1626,13 @@ Here, you'll see:
     - "File System"
     - "Basic Administration"
 
-![image.png](image%2090.png)
+![image.png](images/image%2090.png)
 
-![image.png](image%2091.png)
+![image.png](images/image%2091.png)
 
 After setup, when `pamuser` logs in, they cannot type commands directly. Instead, they'll use a menu of approved commands from the PAM360 interface.
 
-![image.png](image%2092.png)
+![image.png](images/image%2092.png)
 
 ### Conclusion
 
@@ -1693,7 +1693,7 @@ Once your environment is ready:
     > ⚠️ Only Windows OS is supported for RemoteApp
     > 
 
-![image.png](image%2093.png)
+![image.png](images/image%2093.png)
 
 ### Step 3: Select the Applications
 
@@ -1702,9 +1702,9 @@ In the Remote App configuration:
 - Select the applications (e.g., **WordPad**) you wish to make accessible
 - These will be the **only apps** available for selected users
 
-![image.png](image%2094.png)
+![image.png](images/image%2094.png)
 
-![image.png](image%2095.png)
+![image.png](images/image%2095.png)
 
 ### Step 4: Associate RemoteApps with a Resource
 
@@ -1714,11 +1714,11 @@ To apply RemoteApp restrictions to a specific machine:
 2. Select the target Windows VM
 3. Click **Associate > Associate RemoteApp**
 
-![image.png](image%2096.png)
+![image.png](images/image%2096.png)
 
 1. Choose the app(s) you want to allow (e.g., WordPad)
 
-![image.png](image%2097.png)
+![image.png](images/image%2097.png)
 
 ### Step 5: Create a Restricted User
 
@@ -1727,7 +1727,7 @@ Create a user with the **Connection User** role:
 - This role allows **launching apps only**, without access to credentials or passwords
 - Navigate to **Admin > Users > Add User**, and select **Connection User** as the role
 
-![image.png](image%2098.png)
+![image.png](images/image%2098.png)
 
 ### Step 6: Share the Resource (RemoteApp Only)
 
@@ -1737,9 +1737,9 @@ Now that the user and the app are ready:
 2. Under sharing settings, select **RemoteApp Only**
 3. Choose **WordPad** from the list of available apps
 
-![image.png](image%2099.png)
+![image.png](images/image%2099.png)
 
-![image.png](image%20100.png)
+![image.png](images/image%20100.png)
 
 ### Step 7: Connect to the RemoteApp
 
@@ -1748,12 +1748,12 @@ The user can now:
 1. Go to **Connections** in PAM360
 2. Click on the Windows VM shared with them
     
-    ![image.png](61983fe2-96db-450a-be94-5c65e6c73c74.png)
+    ![image.png](images/61983fe2-96db-450a-be94-5c65e6c73c74.png)
     
 
 PAM360 launches **only the specified app** (e.g., WordPad) in a remote session—**no desktop access is granted**.
 
-![image.png](da181bb7-1782-44f7-ba72-59897d133900.png)
+![image.png](images/da181bb7-1782-44f7-ba72-59897d133900.png)
 
 ### Conclusion
 
@@ -1805,7 +1805,7 @@ In today’s digital landscape, **data is a core asset**, and protecting access 
 1. In the **Azure Portal**, create a new resource
 2. Choose **“SQL Database”** and select the option for a **Single Database**
     
-    ![image.png](image%20101.png)
+    ![image.png](images/image%20101.png)
     
 3. Fill in required details and create a new **Azure SQL Server** if needed
     - **Authentication**: Use SQL authentication
@@ -1813,11 +1813,11 @@ In today’s digital landscape, **data is a core asset**, and protecting access 
     - Select a **public endpoint**
     - Enable **“Allow Azure services to access server”** under firewall rules
         
-        ![image.png](8da32bc5-62f4-429e-93ff-c8404f809023.png)
+        ![image.png](images/8da32bc5-62f4-429e-93ff-c8404f809023.png)
         
     - Select **“Default”** under Connection policy
         
-        ![image.png](985cea16-b778-4adb-94cf-0d50833446fb.png)
+        ![image.png](images/985cea16-b778-4adb-94cf-0d50833446fb.png)
         
 
 ### Step 2: Add the Database as a Resource in PAM360
@@ -1828,7 +1828,7 @@ In today’s digital landscape, **data is a core asset**, and protecting access 
     - **Resource Type**: Select **MS SQL Server**
     - Leave other settings as default
 
-![image.png](image%20102.png)
+![image.png](images/image%20102.png)
 
 ### Step 3: Add the Admin Account
 
@@ -1838,7 +1838,7 @@ In today’s digital landscape, **data is a core asset**, and protecting access 
     - ✅ **Password Reset**
     - ✅ **Session Recording SQL**
 
-![image.png](image%20103.png)
+![image.png](images/image%20103.png)
 
 ### Step 4: Configure Remote Password Reset
 
@@ -1849,7 +1849,7 @@ In today’s digital landscape, **data is a core asset**, and protecting access 
     - **MSSQL Admin Account**: Select the previously added admin user
         - This user will be used to **rotate and reset** passwords remotely
             
-            ![image.png](image%20104.png)
+            ![image.png](images/image%20104.png)
             
 
 ### Step 5: Connect and Validate
@@ -1857,7 +1857,7 @@ In today’s digital landscape, **data is a core asset**, and protecting access 
 1. Use PAM360 to launch a session to your Azure SQL Database
 2. You'll be logged in as the **admin user**, and default database will auto-load
 
-![image.png](image%20105.png)
+![image.png](images/image%20105.png)
 
 ### Step 6: Add a Test User to the Database
 
@@ -1881,7 +1881,7 @@ Unlike on-premise SQL Server, **Azure SQL** restricts access to these views — 
 
 You’ll need to **manually register each database user**.
 
-![image.png](image%20106.png)
+![image.png](images/image%20106.png)
 
 ### Step 7: Test Database Access
 
@@ -1893,7 +1893,7 @@ SELECT name FROM sys.databases;
 
 You should see both `admin` and `pamuser` active.
 
-![image.png](image%20107.png)
+![image.png](images/image%20107.png)
 
 ### Step 8: Monitor Access with SQL Session Recording
 
@@ -1901,9 +1901,9 @@ You should see both `admin` and `pamuser` active.
 2. Review session recordings for SQL activity
 3. Track executed queries and user behavior for compliance and accountability
 
-![image.png](image%20108.png)
+![image.png](images/image%20108.png)
 
-![image.png](image%20109.png)
+![image.png](images/image%20109.png)
 
 ### Conclusion
 
@@ -1928,24 +1928,24 @@ For further security, integration access policies specifically related to databa
 - Resource Audit
     - All activities related to privileged accounts and passwords, resources, resource groups, sharing, and password policies
     
-    ![image.png](image%20110.png)
+    ![image.png](images/image%20110.png)
     
 - User Audit
     - All user operations, providing detailed tracking of user activities.
     
-    ![image.png](image%20111.png)
+    ![image.png](images/image%20111.png)
     
 - Task Audit
     - Records of all scheduled tasks created and executed, providing detailed tracking of task executions
     
-    ![image.png](image%20112.png)
+    ![image.png](images/image%20112.png)
     
 - User Sessions
     - Records of all operations performed by users during their active sessions, providing detailed tracking of user activities.
     - Can be viewed by selecting a particular user session during a specific date or within a specific date range
     - Administrators also have the option to terminate any active user session
     
-    ![image.png](image%20113.png)
+    ![image.png](images/image%20113.png)
     
 - Recorded Server Connections
     - All the recorded remote sessions
@@ -1953,7 +1953,7 @@ For further security, integration access policies specifically related to databa
     resource name, account name, or time stamp
     - To view a recorded session,  click the **Play** icon beside the desired recording and use the **Seek** bar to skip parts of the session as needed.
     
-    ![image.png](image%20114.png)
+    ![image.png](images/image%20114.png)
     
 - All logs are also stored locally, for more details and information, check the [following documentation](https://www.manageengine.com/privileged-access-management/help/logs.html)
 
@@ -1961,7 +1961,7 @@ For further security, integration access policies specifically related to databa
 
 - Password Dashboard
     
-    ![image.png](image%20115.png)
+    ![image.png](images/image%20115.png)
     
     | **Element** | **Explanation** | **Use Case** |
     | --- | --- | --- |
@@ -1976,7 +1976,7 @@ For further security, integration access policies specifically related to databa
     | **Active Privileged Sessions** | List of live sessions initiated via PAM360. | Enable live monitoring and, if needed, termination of sessions to mitigate threats or mistakes. |
 - User Dashboard
     
-    ![image.png](image%20116.png)
+    ![image.png](images/image%20116.png)
     
     | **Element** | **Explanation** | **Use Case** |
     | --- | --- | --- |
@@ -1987,7 +1987,7 @@ For further security, integration access policies specifically related to databa
     | **Most Active Users** | Users with highest activity levels (e.g., number of sessions, retrievals). | Identify power users or potential overuse/abuse cases; helps in prioritising user reviews and support. |
 - Keys Dashboard
     
-    ![image.png](image%20117.png)
+    ![image.png](images/image%20117.png)
     
     | **Element** | **Explanation** | **Use Case** |
     | --- | --- | --- |
@@ -2003,7 +2003,7 @@ For further security, integration access policies specifically related to databa
     | **Operation Audit** | Full audit trail of key and certificate events—generation, distribution, rotation, revocation, etc. | Ensures transparency and accountability in key life cycle management; supports internal audits, external compliance checks (e.g., ISO 27001, SOX), and forensic investigations in case of incident. |
 - Security Dashboard
     
-    ![image.png](image%20118.png)
+    ![image.png](images/image%20118.png)
     
     | **Element** | **Explanation** | **Use Case** |
     | --- | --- | --- |
@@ -2020,19 +2020,19 @@ PAM360 offers a wide range of reporting features that help organizations maintai
 
 **Password Reports** focus on the health and management of credentials. They allow administrators to review the full inventory of accounts, check if passwords comply with established policies, monitor password expiry, and track how passwords are being used within the organization. Additional reports help identify passwords that are unshared, not grouped under any resource, or out of sync with their corresponding systems. There are also insights into how password access control workflows are being used and whether any resources have been disabled.
 
-![image.png](image%20119.png)
+![image.png](images/image%20119.png)
 
 **User Reports** provide visibility into user behavior and access patterns. You can quickly see which users have access to which resources, monitor individual user activity involving password operations, and detect users who are not assigned to any group—useful for tightening access controls and maintaining accountability.
 
-![image.png](image%20120.png)
+![image.png](images/image%20120.png)
 
 **Custom Reports** give you detailed audit trails on specific actions, such as passwords accessed by users, approved or denied password requests, failed access attempts, password modifications, and even unauthorized application elevation events. These reports are ideal for forensic analysis and internal audits.
 
-![image.png](image%20121.png)
+![image.png](images/image%20121.png)
 
 **General Reports**, like the Executive Report, offer a high-level summary of all password activities, access events, and policy compliance indicators—perfect for management or compliance officers who need a quick snapshot of the environment.
 
-![image.png](image%20122.png)
+![image.png](images/image%20122.png)
 
 PAM360 provides a dedicated **Compliance Reports** section designed to help organizations demonstrate alignment with industry-specific security and privacy standards. These reports map PAM360’s features and controls to the corresponding clauses and requirements in major regulatory frameworks.
 
@@ -2051,7 +2051,7 @@ PAM360 provides a dedicated **Compliance Reports** section designed to help orga
     - Focuses on provisions in the **General Data Protection Regulation (GDPR)**.
     - Shows how PAM360 supports data subject rights and secures personal data, aiding in privacy assurance for European users.
 
-![image.png](image%20123.png)
+![image.png](images/image%20123.png)
 
 ## 7.4 **How to Generate a Compliance Report (e.g., ISO/IEC 27001)**
 
@@ -2065,7 +2065,7 @@ PAM360 makes it simple to generate compliance reports through a guided process:
     - Configure a **Schedule** if you want the report to be generated periodically.
 5. Click **Generate Report** or **Schedule Report** as needed.
 
-![image.png](image%20124.png)
+![image.png](images/image%20124.png)
 
 Here is an example of a generated report :
 
