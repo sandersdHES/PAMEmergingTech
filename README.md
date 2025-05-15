@@ -368,16 +368,17 @@ In our PAM360 project setup, we used an isolated virtual machine as the test env
 ### Step 4: Open **certmgr.msc** on the agent machine
 
 ### Step 5: Import the `.cer` file into:
-    - **Trusted Root Certification Authorities → Certificates**
+    
+- **Trusted Root Certification Authorities → Certificates**
 
-### Step 6: Run the PAM360 Agent installer:
-    - Ensure you use the **host name that matches the certificate subject** (e.g. pam360.company.local)
-    - Set **SSL Certificate Installed = Yes**
-    - Use the Agent Key from the PAM360 Web UI under Admin → PAM360 Agent
+### Step 6: Run the PAM360 Agent installer
+- Ensure you use the host name that matches the certificate subject (e.g. pam360.company.local)
+- Set SSL Certificate Installed = Yes
+- Use the Agent Key from the PAM360 Web UI under Admin → PAM360 Agent
 
-### Step 7: After successful installation:
-    - The agent should appear under **Admin → PAM360 Agent** with status **"Connected"**.
-    - You can now assign password reset tasks or perform remote actions on the target system.
+### Step 7: After successful installation
+- The agent should appear under **Admin → PAM360 Agent** with status **"Connected"**.
+- You can now assign password reset tasks or perform remote actions on the target system.
 
 ![image.png](images/image%2010.png)
 
