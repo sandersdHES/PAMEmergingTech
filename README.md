@@ -500,21 +500,29 @@ In order to take RDP or remote sessions from the PAM console to our sensitive re
 
 ## 6.1 Installing PAM Agent
 
-[PAM360 Agent](https://www.manageengine.com/privileged-access-management/help/installing-pam360-agent.html)
-
 ### What is PAM360 Agent ?
 
-The Agent enables secure, remote management of systems that are not directly connected to the PAM360 server. It uses outbound HTTPS communication, requiring no VPNs or firewall changes, and supports both Windows and Linux environments. Agents periodically check in with the server to receive and execute tasks such as password resets. This is especially useful for managing machines in isolated networks, like those in a DMZ, or resetting passwords on domain accounts without direct access to domain admin credentials—for example, updating credentials on remote branch office servers without exposing them to the core PAM infrastructure.
+The PAM360 Agent is designed for systems that:
+
+- Do not have direct connectivity to the PAM360 server (e.g., behind firewalls or in isolated subnets)
+
+- Require secure communication using HTTPS
+
+- Need to perform credential rotation or remote actions without VPN or domain admin access
+
+It supports both Windows and Linux platforms and enables a certificate-based trust model.
+
+[Official DOcumentation - PAM360 Agent](https://www.manageengine.com/privileged-access-management/help/installing-pam360-agent.html)
 
 ### Objective
 
-To securely connect remote systems (e.g. VMs or servers in a separate subnet) to PAM360 for centralized password rotation and management, using the PAM360 Agent over HTTPS.
+This use case demonstrates how to securely install and configure the PAM360 Agent to connect systems in isolated networks (e.g., DMZ, remote branch offices) with the PAM360 server, enabling remote password management and credential rotation over secure HTTPS.
 
 ### Context
 
 In our PAM360 project setup, we used an isolated virtual machine as the test environment for the PAM Agent installation. The agent VM had no direct access to the PAM360 server subnet, mimicking a real-world DMZ or branch-office scenario. This allowed us to test agent registration, secure certificate-based trust, and the ability to push credential operations remotely.
 
-### **Prerequisites**
+### Prerequisites
 
 - PAM360 server is running and reachable via HTTPS from the agent VM (outbound).
 - PAM360 server SSL certificate available for import.
@@ -522,34 +530,37 @@ In our PAM360 project setup, we used an isolated virtual machine as the test env
 - Administrative rights on the agent machine (Windows/Linux).
 - Agent hostname configured to match the SSL certificate (or subject alternative name).
 
-### Step 1: **Open PAM360 Web UI** in a browser on the agent VM:
+### Step 1: Open PAM360 Web UI in a browser on the agent VM:
     
     `https://<PAM360-IP>:8282`
     
-### Step 2: Click the 🔒 padlock in the address bar → View Certificate → Details → Copy to File
+### Step 2: Export the Server SSL Certificate
 
-### Step 3: Export the certificate as a `.cer` file
+1. Click the padlock icon in the browser’s address bar
+2. Select View Certificate > Details > Copy to File
+3. Export the file as a .cer certificate (Base-64 encoded X.509 (.CER))
 
-### Step 4: Open **certmgr.msc** on the agent machine
+### Step 3: Import the certificate into the agent VM
+Open **certmgr.msc** on the agent machine and import the .cer file into the **Trusted Root Certification Authorities** store.
 
-### Step 5: Import the `.cer` file into:
-    
-- **Trusted Root Certification Authorities → Certificates**
+This establishes trust for outbound HTTPS communication between agent and server.
 
-### Step 6: Run the PAM360 Agent installer
+### Step 4: Run the PAM360 Agent installer
 - Ensure you use the host name that matches the certificate subject (e.g. pam360.company.local)
 - Set SSL Certificate Installed = Yes
 - Use the Agent Key from the PAM360 Web UI under Admin → PAM360 Agent
-
-### Step 7: After successful installation
-- The agent should appear under **Admin → PAM360 Agent** with status **"Connected"**.
-- You can now assign password reset tasks or perform remote actions on the target system.
 
 ![image.png](images/image%2010.png)
 
 ![image.png](images/image%2011.png)
 
 ![image.png](images/image%2012.png)
+
+### Step 7: Verify Agent Registration
+
+After successful installation
+- The agent should appear under **Admin → PAM360 Agent** with status **"Connected"**.
+- You can now assign password reset tasks or perform remote actions on the target system.
 
 Verifying pam agent into PAM360 console
 
@@ -560,6 +571,18 @@ Verifying pam agent into PAM360 console
 ![image.png](images/image%2015.png)
 
 ### Conclusion
+
+The PAM360 Agent provides a secure and efficient way to manage remote or isolated systems, such as:
+
+- Servers in DMZ networks
+
+- Branch office systems
+
+- Machines without direct PAM360 server access
+
+Using outbound HTTPS communication, the agent eliminates the need for VPN tunnels or domain-level trust. It supports both Windows and Linux systems, offers certificate-based trust, and enables auditable password management even in segmented infrastructures.
+
+This makes it a vital component in any Zero Trust architecture involving privileged access in decentralized environments.
 
 ## 6.2 Importing Active Directory to PAM360
 
@@ -589,41 +612,47 @@ PAM reduces these risks by eliminating permanent privileged access and applying 
 
 ### Objective
 
+This use case demonstrates how to integrate Active Directory (AD) with PAM360 in order to centralize the management of domain users, groups, and organizational units (OUs). This enables secure onboarding of AD accounts into PAM360 for privileged access control, session recording, and password governance.
+
 ### Context
 
-### **Prerequisites**
+While AD manages user authentication and access across an enterprise, it lacks granular privilege management and auditing capabilities. Integrating it with PAM360 allows organizations to:
 
-### Step x:
+- Import AD users and assign PAM roles
 
-![image.png](images/2025-05-08_11h15_20.png)
+- Monitor and control access to AD-linked resources
 
-![image.png](images/2025-05-08_11h15_59.png)
+- Apply Just-In-Time (JIT) access and credential rotation
 
-![image.png](images/2025-05-08_11h18_51.png)
+- Protect against credential theft and lateral movement
+
+In this proof of concept (PoC), we built a local AD environment (domain: pampoc.ch), added test users, and connected a Windows 10 VM to the domain to simulate real enterprise conditions.
+
+### Prerequisites
+
+- A Windows Server VM
+
+- A Windows 10 client VM joined to the domain
+
+- PAM360 installed and accessible via web interface
+
+### Step 1: Create the Active Directory
+
+Go to your Windows Server and create a new Active Directory. You can follow the official Microsoft documentation for this.
+
+[Official documentation](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
+
+Be sure to create a new domain and a new forest. You can name it as you want, but for the sake of this PoC we will use **pampoc.ch**.
 
 ![image.png](images/2025-05-08_11h21_23.png)
 
-![image.png](images/2025-05-08_11h22_32.png)
+Also promote your server to a domain controller.
 
-![image.png](images/2025-05-08_11h23_51.png)
+![image.png](images/2025-05-08_11h18_51.png)
 
-![image.png](images/2025-05-08_11h36_15.png)
+### Step 2: Create Users in Active Directory
 
-![image.png](images/2025-05-08_12h57_29.png)
-
-![image.png](images/2025-05-08_13h05_01.png)
-
-![image.png](images/2025-05-08_13h07_03.png)
-
-![image.png](images/2025-05-08_13h21_57.png)
-
-![image.png](images/2025-05-08_13h23_00.png)
-
-![image.png](images/2025-05-08_13h23_19.png)
-
-![image.png](images/2025-05-08_13h34_25.png)
-
-![image.png](images/2025-05-08_13h39_08.png)
+You can create users in Active Directory using the GUI or PowerShell. For this PoC, we will use PowerShell to create a few test users.
 
 ```powershell
 # Import du module Active Directory
@@ -668,11 +697,76 @@ foreach ($user in $users) {
 }
 ```
 
+### Step 3: Link the Windows 10 VM to the Domain
+
+You will need to adapt the hosts file of your Windows 10 VM to be able to resolve the domain name. You can do this by adding the following line to the hosts file:
+
+```plaintext
+127.0.0.1 ADPAM.pampoc.ch ADPAM
+```
+
+![image.png](images/2025-05-08_12h57_29.png)
+
+- Go to your Windows 10 VM and join it to the domain you just created.
+- Right-click on **This PC** and select **Properties**.
+- Click on **Change settings** under **Computer name, domain, and workgroup settings**.
+- Click on **Change** and select **Domain**.
+- Enter the domain name (e.g., `pampoc.ch`) and click **OK**.
+
+![image.png](images/2025-05-08_13h05_01.png)
+
+- Enter the credentials of a domain admin account when prompted.
+- Change the DNS settings of the Windows 10 VM to point to the IP address of the Active Directory server.
+
+![image.png](images/2025-05-08_13h07_03.png)
+
+- Restart the VM to apply the changes.
+
+### Step 4: Import Active Directory into PAM360
+1. Go to **Admin** → **Active Directory** → **Active Directory Configuration**
+
+2. Click on **Import from Active Directory** and fill in the required fields:
+    - Create a new Domain and call it PAMPOC
+    - **Primary Domain Controller**: **ADPAM**
+    - Enter the credentials of a domain admin account
+    - **Domain Name**: `pampoc.ch`
+    - Click on **Fetch Groups & OUs** to import the groups and OUs from the Active Directory.
+
+![image.png](images/2025-05-08_13h21_57.png)
+
+3. Select the groups and OUs you want to import into PAM360. You can also select the users you want to import.
+
+![image.png](images/2025-05-08_13h23_00.png)
+
+You will see that all the users from the AD have been imported into **Users** in PAM360.
+
+![image.png](images/2025-05-08_13h39_08.png)
+
+5. Repeat the process in **Resources** => **Discover Accounts**.
+
+After this you will be able to connect to your Windows 10 VM using the credentials of the users you just created in the Active Directory.
+
+Go to **Connections** and select the Windows 10 VM. You will see local and domain accounts.
+
 ![image.png](images/image%2016.png)
 
 ![image.png](images/image%2017.png)
 
 ### Conclusion
+
+Integrating Active Directory (AD) with PAM360 brings centralized identity management and privileged access security into a single cohesive platform. Through this integration, you gain complete visibility and control over privileged AD accounts, while leveraging existing domain structures.
+
+By importing users, groups, and OUs from AD, PAM360 enables:
+
+- Seamless onboarding of existing domain users into PAM workflows
+
+- Enforced access control for critical domain resources
+
+- Secure remote access to Windows endpoints via domain credentials
+
+- Support for password rotation, JIT access, and full audit logging
+
+This integration not only enhances security posture but also simplifies identity governance—bridging the gap between traditional directory services and modern privilege management requirements.
 
 ## 6.3 Sending audit notifications
 
