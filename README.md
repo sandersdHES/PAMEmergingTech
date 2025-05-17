@@ -29,10 +29,6 @@ This gap leaves organizations vulnerable to common attack techniques such as:
 
 ### 2.2.1 **Uber Admin Credential Compromise in 2022**
 
-[https://www.dnv.com/cyber/insights/articles/frontline-insights-lessons-from-the-uber-2022-data-breach/](https://www.dnv.com/cyber/insights/articles/frontline-insights-lessons-from-the-uber-2022-data-breach/)
-
-[https://techcrunch.com/2022/09/19/how-to-fix-another-uber-breach/](https://techcrunch.com/2022/09/19/how-to-fix-another-uber-breach/)
-
 In 2022, a hacker successfully breached Uber's systems by stealing employee credentials using password-stealing malware combined with social engineering techniques. To bypass Multi-Factor Authentication (MFA), the attacker employed a method known as **MFA fatigue**. This tactic exploits the routine of employees frequently logging in and re-authenticating during their workday. The attacker bombarded the targeted employee with repeated MFA push notifications—often outside of working hours—hoping the victim would eventually approve a login request out of frustration or confusion.
 
 Once access was granted, the attacker gained entry to Uber’s internal network. While scanning the intranet, they discovered PowerShell scripts containing **hardcoded administrator credentials** for a Privileged Access Management (PAM) solution. These credentials provided access to Uber's cloud infrastructure.
@@ -47,10 +43,6 @@ This incident showcases the danger of hardcoded credentials, over-privileged use
 
 ### 2.2.2 Tesla Data Leak in 2023
 
-[https://thecyberexpress.com/former-tesla-employees-tesla-data-leak/](https://thecyberexpress.com/former-tesla-employees-tesla-data-leak/)
-
-[https://tribune.com.pk/story/2535182/what-is-dogequest](https://tribune.com.pk/story/2535182/what-is-dogequest)
-
 Two former Tesla employees leaked over **100 GB of sensitive information** affecting more than **75,000 individuals**. The compromised data included personally identifiable information such as names, Social Security numbers, bank details, and even **in-car recordings of customers**.
 
 According to Tesla’s breach notification, *"a foreign media outlet informed Tesla that it had obtained confidential company information."* The two employees are believed to have misappropriated this data by unlawfully sharing it with the media. While the exact methods remain unclear, the breach **could likely have been prevented through stricter access controls** on databases and the user accounts tied to them.
@@ -60,12 +52,6 @@ In an unrelated but equally concerning event, Tesla was reportedly targeted agai
 These incidents collectively highlight the importance of **robust data governance**, **access management**, and **ongoing monitoring** to protect against both insider threats and external attacks.
 
 ### 2.2.3 **Dropbox Sign Service Account Breach in 2024**
-
-[https://www.kiteworks.com/cybersecurity-risk-management/dropbox-sign-breach/](https://www.kiteworks.com/cybersecurity-risk-management/dropbox-sign-breach/)
-
-[https://sign.dropbox.com/blog/a-recent-security-incident-involving-dropbox-sign](https://sign.dropbox.com/blog/a-recent-security-incident-involving-dropbox-sign)
-
-[https://www.filecloud.com/blog/2024/07/when-giants-fall-the-lessons-from-the-dropbox-data-breach/](https://www.filecloud.com/blog/2024/07/when-giants-fall-the-lessons-from-the-dropbox-data-breach/)
 
 In April 2024, Dropbox disclosed a security breach affecting Dropbox Sign (formerly HelloSign), its e-signature service. According to a blog post by the company : “Upon further investigation, we discovered that a threat actor had accessed data including Dropbox Sign customer information such as emails, usernames, phone numbers and hashed passwords, in addition to general account settings and certain authentication information such as API keys, OAuth tokens, and multi-factor authentication”
 
@@ -82,17 +68,15 @@ The inclusion of sensitive authentication data like API keys and OAuth tokens si
 
 This incident underscores the importance of proactive security governance, especially for services that handle legal and identity-sensitive data. It also serves as a reminder that automation and convenience must always be balanced with strong access controls and vigilant monitoring.
 
-## 2.3 Our motivation
+### Sources
 
-The motivation for this project is to address these security risks by implementing a modern PAM solution that:
-
-- Eliminates permanent privileged access
-- Replaces static credentials with dynamic, short-lived secrets
-- Enforces strong authentication (e.g., MFA)
-- Enables full session recording and auditing
-- Centralizes credential management for critical assets like VMs and databases
-
-By deploying and testing **ManageEngine PAM360**, we aim to demonstrate how such a solution can strengthen privileged access controls and reduce the overall attack surface in cloud-based and hybrid environments.
+- https://www.dnv.com/cyber/insights/articles/frontline-insights-lessons-from-the-uber-2022-data-breach/
+- https://techcrunch.com/2022/09/19/how-to-fix-another-uber-breach/
+- https://thecyberexpress.com/former-tesla-employees-tesla-data-leak/
+- https://tribune.com.pk/story/2535182/what-is-dogequest
+- https://www.kiteworks.com/cybersecurity-risk-management/dropbox-sign-breach/
+- https://sign.dropbox.com/blog/a-recent-security-incident-involving-dropbox-sign
+- https://www.filecloud.com/blog/2024/07/when-giants-fall-the-lessons-from-the-dropbox-data-breach/
 
 # 3. Solution Overview
 
@@ -101,7 +85,6 @@ By deploying and testing **ManageEngine PAM360**, we aim to demonstrate how such
 This project uses **ManageEngine PAM360** as the core platform to demonstrate privileged access management in a cloud-based lab environment.
 
 **ManageEngine** is the enterprise IT management division of **Zoho Corporation**, a privately held, multinational technology company founded in 1996 by Sridhar Vembu and Tony Thomas. Headquartered in Chennai, India, with a global presence including offices in the United States, Zoho specializes in developing software solutions for businesses of all sizes. ManageEngine focuses on providing comprehensive IT management tools, serving companies in 190 countries.
-[factsheet.pdf](https://download.manageengine.com/pdf/factsheet.pdf)
 
 A member of our group secured a license for **ManageEngine PAM360**, prompting us to select this solution for our Proof of Concept (PoC). According to Gartner, ManageEngine is recognized as a Challenger in the 2024 Magic Quadrant™ for Privileged Access Management, highlighting its viability for our PoC .
 
@@ -171,7 +154,11 @@ JumpServer offers two main editions :
 
 Although JumpServer offers multi-protocol support, session auditing, and 2FA, we chose PAM360 for the PoC due to its more complete enterprise features, polished user interface, and the fact that a group member secured a license.
 
-https://jumpserver.org/index-en.html
+### Sources
+
+- https://download.manageengine.com/pdf/factsheet.pdf
+- https://www.manageengine.com/privileged-access-management/analyst-opinion/gartner-magic-quadrant-pam.html?new-homepage
+- https://jumpserver.org/index-en.html
 
 ---
 
@@ -345,6 +332,169 @@ Use the **Discover Resources** feature:
 Now that the Windows and Linux VMs are added, try initiating remote sessions directly from PAM360 to ensure proper configuration and user mapping.
 
 🎉 **Congratulations!** You’ve successfully set up PAM360 in a cloud-based Azure environment. Your privileged accounts are now centrally managed and ready for secure usage.
+
+## 5.5 VPN Access
+
+One of the goal when implementing a PAM in your architecture is access control, if we push this principle a bit further we can imagine using PAM console as a single entry point to access sensitive computer and it is also one of the best practices recommended by ManageEngine.
+
+In order to achieve this we can set up a vpn connection between a work computer (external) and our secure network.
+
+The desired state is the following :
+
+![vpndiagram.png](images/vpndiagram.png)
+
+We will keep this simple for our POC to better understand the principle and don’t overload with many details.
+
+We need several things to initiate a vpn connection to azure private network:
+
+- Self signed certifcate
+- Virtual network gateway from Azure
+- Public Ip from Azure
+- Point to site connection
+
+Let’s go through the process!
+
+### 5.5.1 Virtual Network Gateway
+
+In your resource group, create a "Virtual network gateway" resource.
+
+![vpn1.png](images/vpn1.png)
+
+Add a Gateway subnet address range (like 10.1.1.0/27). You will also need a public IP:
+
+![vpn2.png](images/vpn2.png)
+
+Once your VPN gateway is deployed correctly, click on it and go under Settings => Point-to-Site Configuration.
+
+![vpn3.png](images/vpn3.png)
+
+"Address pool" is for the IP that will be dynamically associated to your computer when initiating a VPN connection
+
+Tunnel type → choose IKEv2 and SSTP so that you can use it on Windows and MAC devices.
+
+**Short reminder**
+
+- **IKEv2 (Internet Key Exchange v2)**: VPN protocol that supports mobility and auto-reconnect. Commonly used with IPsec for secure tunneling. Great for mobile devices.
+- **SSTP (Secure Socket Tunneling Protocol)**: VPN protocol that uses **HTTPS (TCP 443)** to tunnel traffic. Useful for bypassing firewalls and works well behind proxies. Built into Windows.
+
+### 5.5.2 Certificate generation & VPN connection
+
+For this proof of concept, both the **root certificate** and the corresponding **client certificate** were self-signed and generated locally on my local computer using PowerShell. This approach was chosen for its simplicity and speed — it allowed full control over certificate creation and easy integration into Azure’s Point-to-Site (P2S) VPN setup. The root certificate was then uploaded to the Azure VPN Gateway, and the client certificate was installed locally to authenticate the VPN session.
+
+While this local generation method is perfectly acceptable for testing and lab environments, in a production scenario it is generally recommended to issue certificates from a centralized and secured Certificate Authority (CA). This ensures better management of the certificate lifecycle, revocation, and trust hierarchy.
+
+An alternative might have been to generate the certificates directly on the **PAM server**. However, this does not offer a security advantage for P2S VPN use cases, as the PAM server is not intended to act as a CA and doesn't provide dedicated tools for secure certificate issuance or distribution. In contrast, generating the certificates locally gave more flexibility during the PoC phase without adding server-side complexity.
+
+Furthermore, **PAM360 itself does not support generating certificates** for Azure VPN authentication. Its certificate management capabilities are oriented toward managing SSL certificates and SSH keys, not issuing identity certificates for network authentication.
+
+In summary, **local certificate generation was appropriate for this controlled environment**, but in a real-world deployment, certificates should be handled by an enterprise-grade CA with policy enforcement, revocation capabilities, and secure issuance workflows.
+
+You will use Powershell and the following commands to generate a root and client certificate on your local computer.
+
+```powershell
+$cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+>> -Subject "CN=VpnP2SRootCert" -KeyExportPolicy Exportable `
+>> -HashAlgorithm sha256 -KeyLength 2048 `
+>> -CertStoreLocation "Cert:\CurrentUser\My" `
+>> -KeyUsageProperty Sign -KeyUsage CertSign
+```
+
+```powershell
+New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert `
+>> -KeySpec Signature -Subject "CN=VpnP2SClientCert1" `
+>> -KeyExportPolicy Exportable -HashAlgorithm sha256 -KeyLength 2048 `
+>> -CertStoreLocation "Cert:\CurrentUser\My" `
+>> -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+```
+
+If you want to install VPN on many computers, execute the second command multiple times in order to generate several client certificates. The benefit from this action is that you can revoke it in Azure using the thumbprint of the client certificate(.pfx),  so if an employee doesn’t work for your company anymore, no need to uninstall his certificate, just revoke it instead.
+
+![vpn4.png](images/vpn4.png)
+
+You will then export your certificates to reuse them later in your local machine. You can manage this using **certmgr** on windows (typing "certificates" in the Windows search bar).
+
+![vpn5.png](images/vpn5.png)
+
+Here you will see all your certificate and those we have just created (GfgP2SClient & GfgP2SRootCert)
+
+![vpn6.png](images/vpn6.png)
+
+For the **Root** certificate:
+
+- Do not export private key
+- X.509 encoded base 64 (.cer)
+
+For the **Client** certificate:
+
+- Export private key
+- PKCS format (.pfx)
+    - Include all certificates in certification path → YES
+    - Enable certficate privacy → YES
+- Enter a password (remember it) *testvpn*
+
+To sum up, the .**pfx** file will be the client certificate that you will install on your computer and on other that needs to have the VON.
+
+Go back to your VPN in Azure and under root certificate paste the value of .cer generate previously.
+
+**TIP→ open it with notepad and copy value inside Azure**
+
+the .**cer is used in azure as root certificate** for your vpn connection.
+
+Then choose your .pfx client certificate and install it on the required computer(give the password you set during the exportation - *testvpn* -)
+
+.**pfx** → **store a certificate along with its private key** in a single, encrypted file.
+
+.**cer → digital certificate used to verify the identity of a server, user, or device and to establish secure communications using public key infrastructure (PKI).**
+
+**X.509** → standard that defines the format of public key certificates used in secure communications, such as SSL/TLS, to verify identities and enable encrypted data exchange.
+
+The last step is to download the VPN client from Azure and install it on our own computer. Then, launch the VpnClientSetupAmd64.exe(for Windows).
+
+![vpn7.png](images/vpn7.png)
+
+Check that you have the VPN connection from your settings and connect it.
+
+Once you are connected :
+test the URL —  https://10.0.0.4:8282  — you should be able to see the PAM console (verify that your PAM server is started)
+
+Here are a few sources to help you debugging if something went wrong.
+
+https://www.youtube.com/watch?v=Yshpo6V1qUQ
+
+[powershell - VpnClientSetupAMD64.exe missing in Azure point-to-site VPN download - Stack Overflow](https://stackoverflow.com/questions/60641866/vpnclientsetupamd64-exe-missing-in-azure-point-to-site-vpn-download)
+
+[Configure User VPN clients: certificate authentication: Azure VPN client: Windows - Azure Virtual WAN | Azure Docs](https://docs.azure.cn/en-us/virtual-wan/vpn-client-certificate-windows)
+
+### 5.5.3 Configure restricted subnets
+
+Now that we have our VPN and that we can connect to the console (as it should be implemented in a real world entreprise), the final step is to configure the subnets so that you can only access PAM console from the VPN  and initiate remote session through it, and not directly from other tools like RDP from your own computer. Keep in mind that this is a PoC and that in a real world implementation there will be more specific rules and strict access.
+
+In order to achieve this, lets make a Network security group (NSG) for our ressource subnet in Azure and add the following rules:
+
+1. Deny all access from our VPN connection to our subnet “ressources”
+
+![nsg1.png](images/nsg1.png)
+    
+2. Deny direct RDP from our VPN to Pam server
+
+![nsg2.png](images/nsg2.png)
+
+Like this we are sure we can ONLY access ressources via the PAM console while being connected with VPN and that we respect our initial architecture.
+
+Ressource subnet:
+
+![vpn8.png](images/vpn8.png)
+
+PAM server:
+
+![vpn9.png](images/vpn9.png)
+
+### 5.5.4 Port configuration for remote gateway
+
+In order to take RDP or remote sessions from the PAM console to our sensitive ressources you need to add a rule in the firewall of pam server since gateway for rdp go through the port 8283.
+
+![vpn10.png](images/vpn10.png)
+
 
 # 6. Use cases
 
@@ -629,19 +779,7 @@ With PAM360, your organization can:
 
 Whether importing third-party certificates or generating internal ones, PAM360 ensures your **certificate lifecycle is secure, automated, and compliant**.
 
-## 6.5 Setting a VPN access
-
-### Objective
-
-### Context
-
-### **Prerequisites**
-
-### Step x:
-
-### Conclusion
-
-## 6.6 Creating Users and Configuring Control Access Policies
+## 6.5 Creating Users and Configuring Control Access Policies
 
 ### Objective
 
@@ -820,7 +958,7 @@ This use case demonstrates how PAM360 allows secure, policy-driven user access b
 
 With PAM360, organizations ensure that **users access only what they are authorized to**, and **admins maintain complete control and visibility** over privileged operations.
 
-## 6.7 Securing Personal Data with a Passphrase
+## 6.6 Securing Personal Data with a Passphrase
 
 [https://www.manageengine.com/privileged-access-management/help/personal_passwords.html](https://www.manageengine.com/privileged-access-management/help/personal_passwords.html)
 
@@ -901,8 +1039,6 @@ If your passphrase is lost or forgotten:
 > ❗ Warning: Treat your passphrase like a digital safe key—once lost, the contents inside are unrecoverable.
 > 
 
-![personal-passwords8.png](images/personal-passwords8.png)
-
 ### Conclusion
 
 By setting a **personal encryption passphrase**, PAM360 empowers users with a **private, secure vault** inside the platform:
@@ -913,7 +1049,7 @@ By setting a **personal encryption passphrase**, PAM360 empowers users with a **
 
 You now have a **personal digital safe** inside PAM360—protected by you, and you alone.
 
-## 6.8 Managing and Enforcing Password Security
+## 6.7 Managing and Enforcing Password Security
 
 ### Objective
 
@@ -1045,7 +1181,7 @@ This use case illustrates how PAM360 simplifies and secures password management 
 
 With these capabilities, PAM360 ensures that **password hygiene and policy enforcement** are not only automated, but also auditable and secure.
 
-## 6.9 Enabling MFA with Google Authenticator in PAM360 accounts
+## 6.8 Enabling MFA with Google Authenticator in PAM360 accounts
 
 ### Objective
 
@@ -1117,7 +1253,7 @@ With MFA enabled via Google Authenticator:
 
 This simple but powerful step significantly strengthens your security posture.
 
-## 6.10 Enabling TOTP-Based Two-Factor Authentication in PAM360
+## 6.9 Enabling TOTP-Based Two-Factor Authentication in PAM360
 
 ### **Objective**
 
@@ -1156,9 +1292,9 @@ We have already created a small Flask app for you implementing a basic login pag
         
         ![image.png](images/image%2058.png)
         
-- In the **Deployment Center** of the Web App:
-    - Connect it to your GitHub repository
-    - Deploy from the branch your code is hosted on
+    - In the **Deployment Center** of the Web App:
+        - Connect it to your GitHub repository
+        - Deploy from the branch your code is hosted on
 
 ![image.png](images/image%2059.png)
 
@@ -1167,7 +1303,7 @@ Ensure the application deploys correctly
 > If there are deployment issues, troubleshoot via Azure logs
 > 
 
-### Step 2: Add the Web App as a Resource in PAM360
+### Step 2: Add the Web App to PAM360 as a Resource
 
 1. Log in to **PAM360** with an admin account
 2. Go to **Resources > Add Resource**
@@ -1245,7 +1381,7 @@ This use case demonstrates how PAM360 can be used to manage **2FA credentials an
 
 With this setup, PAM360 can manage secure access even for applications requiring two-factor authentication, combining usability with compliance.
 
-## 6.11 Configuring Zero Trust Framework
+## 6.10 Configuring Zero Trust Framework
 
 [https://www.manageengine.com/privileged-access-management/help/zerotrust.html](https://www.manageengine.com/privileged-access-management/help/zerotrust.html)
 
@@ -1285,8 +1421,6 @@ Here are some key benefits of using Zero Trust in a company :
 You can implement it using many standards. Here you can see the Zero Trust Framework from The National Institute of Standards and Technology for the United States (NIST) to illustrate how it can be set up.
 
 ![[https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/](https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/)](images/nist-zero-trust-framework-1024x480.png)
-
-[https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/](https://www.crowdstrike.com/en-us/cybersecurity-101/zero-trust-security/)
 
 ### Zero Trust in PAM360
 
@@ -1448,7 +1582,7 @@ This use case shows how PAM360 enables a practical implementation of the **Zero 
 
 You now have a powerful policy-driven access control mechanism that enforces trust **before** access is granted.
 
-## 6.12 Connecting  to GitHub using SSH keys generated by PAM360
+## 6.11 Connecting  to GitHub using SSH keys generated by PAM360
 
 ### Objective
 
@@ -1532,7 +1666,7 @@ With this configuration, you can now:
 
 This setup demonstrates how PAM360 extends beyond infrastructure management and supports **developer workflows** as part of a **Zero Trust strategy**.
 
-## **6.13 Securing SSH Access and Command Restrictions on a Linux Machine**
+## 6.12 Securing SSH Access and Command Restrictions on a Linux Machine
 
 [https://www.manageengine.com/privileged-access-management/help/ssh-command-control.html](https://www.manageengine.com/privileged-access-management/help/ssh-command-control.html)
 
@@ -1676,7 +1810,7 @@ This use case illustrates how PAM360 enhances SSH access management by:
 
 You now have a compliant, secure, and auditable SSH access setup aligned with PAM best practices.
 
-## 6.14 Securing Application-Level Access via RemoteApp
+## 6.13 Securing Application-Level Access via RemoteApp
 
 [https://www.manageengine.com/privileged-access-management/help/remote-app.html](https://www.manageengine.com/privileged-access-management/help/remote-app.html)
 
@@ -1796,21 +1930,7 @@ This use case illustrates how **RemoteApp in PAM360** enables secure, applicatio
 
 You now have a tightly scoped, secure RemoteApp setup using PAM360—fully aligned with modern **least-privilege** and **zero-trust** principles.
 
-## 6.15 Setting up a remote secure session
-
-https://www.manageengine.com/privileged-access-management/help/connections-operations.html
-
-### Objective
-
-### Context
-
-### **Prerequisites**
-
-### Step x:
-
-### Conclusion
-
-## 6.16 Protecting a Cloud SQL Database with PAM360
+## 6.14 Protecting a Cloud SQL Database with PAM360
 
 ### Objective
 
@@ -1950,6 +2070,104 @@ By integrating PAM360 with Azure SQL, your organization achieves **cloud-ready p
 
 For further security, integration access policies specifically related to databases would be the next logical step.
 
+## 6.15 Configuring Just-in-Time (JiT) Privilege Elevation
+
+### Objective
+This use case demonstrates how to use Just-In-Time (JIT) privilege elevation in PAM360 to grant users temporary administrative rights on a Windows or Domain resource. This helps minimize persistent admin privileges and reduces the attack surface.
+
+### Context
+
+In traditional environments, users often retain permanent admin access to systems, which increases the risk of privilege misuse or compromise. JIT access solves this by:
+
+Providing elevated access only when needed
+
+Automatically revoking access after a defined time window
+
+Keeping full auditability and approval workflows
+
+This aligns with Zero Trust and least-privilege access best practices.
+
+[https://www.youtube.com/watch?v=4GP7mXXdxyA](Video: Configuring JIT in PAM360)
+[https://www.manageengine.com/privileged-access-management/just-in-time-privilege-elevation.html](Official Guide)
+
+### Prerequisites
+
+- Administrator access to PAM360
+
+- A configured Windows Server or Domain resource in PAM360
+
+- An existing Access Control Policy (if using approval workflow)
+
+- A user account to elevate during the session
+
+### Step 1: Go to the Target Resource in PAM360
+
+1. Navigate to the Resources tab
+
+2. Locate your Windows or Domain-joined machine
+
+3. Click the Action icon (⋮) next to the resource
+
+4. Select Configure > Access Control
+
+### Step 2: Enable Just-In-Time Privilege Elevation
+
+1. In the Access Control window, go to the Privilege Elevation tab
+
+2. Check the box “Elevate account by adding it to local/security groups”
+
+image here
+
+This tells PAM360 to temporarily add the account to a Windows security group during an approved access session.
+
+### Step 3: Select the Groups for Elevation
+
+A list of local or domain security groups will appear. Select one or more groups such as:
+
+- Administrators
+
+- Remote Desktop Users
+
+- Any custom high-privilege group
+
+image here
+
+These groups define what elevated rights the user will gain during their session.
+
+### Step 4: Assign an Admin Account for Elevation Execution
+
+Select an administrator account that PAM360 will use to:
+
+- Add the requesting user to the selected group(s)
+
+- Remove them automatically after the session ends
+
+The account must have permission to manage group membership on the resource.
+
+This step ensures automation of the elevation process.
+
+### What Happens During a JIT Session?
+1. A user requests access to a shared resource (e.g., a Windows server)
+
+2. If Access Control is enabled, the request goes to the admin for approval
+
+3. Once approved, PAM360:
+
+- Adds the user to the designated privileged group
+
+- Starts a timed session
+
+- Revokes access (removes from group) once the session ends or is checked in
+
+### Conclusion
+
+This use case illustrates how PAM360 enables **Just-In-Time (JIT) privilege elevation**:
+- Provides **temporary admin access** only when needed
+- Automatically revokes access after a defined period
+- Reduces the attack surface by minimizing persistent privileges
+- Maintains full auditability and approval workflows
+- Aligns with **Zero Trust** and **least-privilege** access best practices
+
 ---
 
 # 7. Monitoring and auditing
@@ -2028,7 +2246,7 @@ For further security, integration access policies specifically related to databa
     | **Keys Not Rotated in Last 30 Days** | Shows keys that haven't been rotated in over 30 days, potentially violating policy or increasing the attack surface. | Allows admins to schedule or enforce rotation of keys regularly, meeting internal policies or external compliance mandates, and avoiding long-term key reuse vulnerabilities. |
     | **Certificate Authority** | Displays details about certificates issued by different CA (Certificate Authorities) in the environment. | Helps organisations monitor CA trust chains, detect reliance on untrusted CAs, and manage internal vs external issuance, ensuring all digital identities are validated by approved authorities. |
     | **Certificate Expiry** | Provides expiry timelines for all certificates, enabling proactive renewal. | Prevents downtime or security warnings due to expired certificates; admins can schedule renewals in advance and automate alerts for expiring certificates. |
-    | **License Details** | Shows usage stats of the PAM360 licensing model, including counts of SSL certs, SSH keys, PGP keys, and key stores. | Enables planning and scaling—admins can assess if they’re nearing license limits and plan upgrades or cleanups accordingly to optimise PAM360 usage. |
+    | **License Details** | Shows usage stats of the PAM360 licensing model, including counts of SSL certs, SSH keys, and key stores. | Enables planning and scaling—admins can assess if they’re nearing license limits and plan upgrades or cleanups accordingly to optimise PAM360 usage. |
     | **Vulnerabilities** | Detects cryptographic vulnerabilities (e.g., weak cipher suites, poodle SSL, revoked certificates). | Security teams can act on flagged risks, running remediation efforts (e.g., disabling weak cipher suites or revoking compromised certs) to ensure system-wide cryptographic hygiene and reduce risk of exploitation. |
     | **SSH Key Summary** | Overview of SSH keys: total, unused, unique, or duplicated keys, helping assess key sprawl and hygiene. | Enables reduction of SSH key clutter, removal of orphaned keys, and enforcement of least-privilege principles by reviewing SSH key deployments and access paths. |
     | **Operation Audit** | Full audit trail of key and certificate events—generation, distribution, rotation, revocation, etc. | Ensures transparency and accountability in key life cycle management; supports internal audits, external compliance checks (e.g., ISO 27001, SOX), and forensic investigations in case of incident. |
@@ -2157,23 +2375,12 @@ Although PAM360 is a nice solution, it would be interesting to dive into other s
     - Initial setup can be time-consuming.
     - May require dedicated personnel for ongoing management.
 
-## **8.4 Summary**
+### Sources
 
-- **ManageEngine PAM360** is ideal for small to medium-sized businesses seeking an affordable and comprehensive PAM solution with user-friendly features.
-- **CyberArk** is best suited for large enterprises, especially in regulated industries, requiring advanced security features and extensive compliance support.
-- **BeyondTrust** offers a robust solution for large enterprises with complex IT environments, providing strong integration capabilities and real-time analytics.
-
-Your choice among these solutions should align with your organization's size, complexity, compliance requirements, and budget constraints.
-
-Sources
-
-[29 Best Privileged Access Management Solutions Reviewed In 2025 - The CTO Club](https://thectoclub.com/tools/best-privileged-access-management-solutions/)
-
-[CyberArk vs. BeyondTrust: Which PAM Solution is Better? | StrongDM](https://www.strongdm.com/blog/cyberark-vs-beyondtrust)
-
-https://hoop.dev/blog/top-5-cyberark-alternatives-for-enhanced-enterprise-security-2/
-
-[CyberArk Privileged Access Manager vs PAM360 2025 | Gartner Peer Insights](https://www.gartner.com/reviews/market/privileged-access-management/compare/product/cyberark-privileged-access-manager-vs-pam360)
+- https://thectoclub.com/tools/best-privileged-access-management-solutions/
+- https://www.strongdm.com/blog/cyberark-vs-beyondtrust
+- https://hoop.dev/blog/top-5-cyberark-alternatives-for-enhanced-enterprise-security-2/
+- https://www.gartner.com/reviews/market/privileged-access-management/compare/product/cyberark-privileged-access-manager-vs-pam360
 
 ---
 
@@ -2184,5 +2391,3 @@ https://hoop.dev/blog/top-5-cyberark-alternatives-for-enhanced-enterprise-securi
 - *Potential next steps (SIEM integration, open-source options)*
 
 ---
-
-TBD
