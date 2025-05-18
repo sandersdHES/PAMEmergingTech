@@ -12,8 +12,6 @@ This project aims to:
   - Active Directory integration
   - RemoteApp access
   - Just-in-Time (JIT) privilege elevation
-  - GitHub SSH key management
-  - Azure SQL protection
 - Enforce modern security principles: MFA, Zero Trust, password rotation, and session auditing
 
 We selected **ManageEngine PAM360**, a recognized player in the 2024 Gartner Magic Quadrant™, to deploy and demonstrate a robust, real-world PAM solution.
@@ -22,7 +20,7 @@ We selected **ManageEngine PAM360**, a recognized player in the 2024 Gartner Mag
 
 Explore the complete setup guide, use cases, security insights, and tool comparisons in our dedicated **GitHub Wiki**:
 
-🔗 [https://github.com/sandersdHES/PAMEmergingTech/wiki](https://github.com/sandersdHES/PAMEmergingTech/wiki)
+🔗 [Our Wiki for PAM360](https://github.com/sandersdHES/PAMEmergingTech/wiki)
 
 The wiki covers:
 - [Lab Architecture](https://github.com/sandersdHES/PAMEmergingTech/wiki/Lab_architecture)
