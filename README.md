@@ -22,6 +22,9 @@ Explore the complete setup guide, use cases, security insights, and tool compari
 
 🔗 [Our Wiki for PAM360](https://github.com/sandersdHES/PAMEmergingTech/wiki)
 
+If you want to go through our presentation and see the videos related to it, please download the videos on this link (valid until the 20.06.2025) :
+🔗  [Link to videos](https://www.swisstransfer.com/d/cd448566-58da-40f2-8cc7-f4419546db2b)
+
 The wiki covers:
 - [Lab Architecture](https://github.com/sandersdHES/PAMEmergingTech/wiki/Lab_architecture)
 - [Installation & Configuration](https://github.com/sandersdHES/PAMEmergingTech/wiki/Installation_configuration)
